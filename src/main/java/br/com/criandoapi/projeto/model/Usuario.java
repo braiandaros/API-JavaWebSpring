@@ -6,6 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,13 +26,23 @@ public class Usuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	@Column(name = "nome_completo", length = 200, nullable = true)
+	
+	@Size(min = 3, message = "O nome deve ter no minimo e caracteres")
+	@NotBlank(message = "O nome é obrigatorio")
+	@Column(name = "nome_completo", length = 200, nullable = false)
 	private String nome;
-	@Column(name = "email", length = 50, nullable = true)
+	
+	@Email(message = "Insira um Email valido")
+	@NotBlank(message = "O email é obrigatorio")
+	@Column(name = "email", length = 50, nullable = false)
 	private String email;
-	@Column(name = "senha", columnDefinition = "TEXT", nullable = true)
+	
+	@NotBlank(message = "A senha é obrigatorio")
+	@Column(name = "senha", columnDefinition = "TEXT", nullable = false)
 	private String senha;
-	@Column(name = "telefone", length = 15, nullable = true)
+	
+	@NotBlank(message = "O telefone é obrigatorio")
+	@Column(name = "telefone", length = 15, nullable = false)
 	private String telefone;
 	
 	/* public Integer getId() {
