@@ -6,6 +6,14 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+
+@Getter
+@Setter
+
+// @Data //Tem get set e construtores
 
 @Entity
 @Table(name = "usuario")
@@ -24,7 +32,7 @@ public class Usuario {
 	@Column(name = "telefone", length = 15, nullable = true)
 	private String telefone;
 	
-	public Integer getId() {
+	/* public Integer getId() {
 		return id;
 	}
 	public void setId(Integer id) {
@@ -53,6 +61,7 @@ public class Usuario {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
+	} */
+	
 }
 
