@@ -2,6 +2,8 @@ package br.com.criandoapi.projeto.security;
 
 import java.io.IOException;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import jakarta.servlet.FilterChain;
@@ -15,6 +17,11 @@ public class SecurityFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request,
 									HttpServletResponse response,
 									FilterChain filterChain) throws ServletException, IOException {
+		
+		if(request.getHeader("Authorization") != null) {
+			Authentication auth = TokenUtil.validate(request);
+			SecurityContextHolder.getContext().setAuthentication(auth);
+		}
 		
 		filterChain.doFilter(request, response);
 	}
