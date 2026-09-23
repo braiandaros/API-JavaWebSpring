@@ -65,7 +65,8 @@ public class UsuarioController{
 		if (token != null) {
 			return ResponseEntity.ok(token);
 		}
-		return ResponseEntity.status(200).build();
+		// Quando o login falha, agora devolve o Status 401 (Não Autorizado) em vez de 200 (Sucesso)
+		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
 	}
 	
 	@ResponseStatus(HttpStatus.BAD_REQUEST)

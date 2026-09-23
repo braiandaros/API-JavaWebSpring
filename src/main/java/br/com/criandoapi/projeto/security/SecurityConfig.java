@@ -19,6 +19,9 @@ public class SecurityConfig{
 			   .csrf(csfr -> csfr.disable())
 			   .authorizeHttpRequests(auth -> auth
 					   .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll()
+					   
+					   .requestMatchers(HttpMethod.GET, "/*", "/*index.html", "/*style.css", "/*login.js").permitAll()
+					   
 					   .anyRequest().authenticated()
 				);
 		httpSec.addFilterBefore(new SecurityFilter(), UsernamePasswordAuthenticationFilter.class);
