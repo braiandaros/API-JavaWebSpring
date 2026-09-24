@@ -20,7 +20,8 @@ public class SecurityConfig{
 			   .authorizeHttpRequests(auth -> auth
 					   .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll()
 					   
-					   .requestMatchers(HttpMethod.GET, "/*", "/*index.html", "/*style.css", "/*login.js").permitAll()
+					// O padrão /**/ liberta a leitura independentemente do nível da pasta
+					   .requestMatchers(HttpMethod.GET, "/**/*.html", "/**/*.css", "/**/*.js", "/**/*.ico", "/favicon.ico", "/error").permitAll()		
 					   
 					   .anyRequest().authenticated()
 				);
