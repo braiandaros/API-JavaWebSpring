@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/painel.js" defer></script>
+    <title>Projeto API - Painel CRUD</title>
+</head>
+<body>
+    <main class="container">
+        <div class="box" style="max-width: 650px;">
+            <h1>Painel de Usuários</h1>
+            
+            <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                <button id="btnCarregar">🔄 Atualizar Lista</button>
+                <button id="btnSair" style="background-color: #f44336;">🚪 Sair</button>
+            </div>
+            
+            <div id="mensagem"></div>
+
+            <!-- Formulário de Edição (Fica escondido até clicar em Editar) -->
+            <form id="formEditar" style="display: none; background: #2b2b2b; padding: 15px; border-radius: 8px; margin-top: 15px; text-align: left;">
+                <h3 style="color: white; margin-top: 0;">Editar Usuário</h3>
+                <input type="hidden" id="editId">
+                
+                <div class="input-group">
+                    <label for="editNome">Nome</label>
+                    <input type="text" id="editNome" required>
+                </div>
+                <div class="input-group">
+                    <label for="editEmail">E-mail</label>
+                    <input type="email" id="editEmail" required>
+                </div>
+                <div class="input-group">
+                    <label for="editTelefone">Telefone</label>
+                    <input type="text" id="editTelefone" required>
+                </div>
+                <div class="input-group">
+                    <label for="editSenha">Nova Senha</label>
+                    <input type="password" id="editSenha" placeholder="Digite a senha para confirmar" required>
+                </div>
+
+                <div style="display: flex; gap: 10px;">
+                    <button type="submit">💾 Salvar Alterações</button>
+                    <button type="button" id="btnCancelar" style="background-color: #757575;">Cancelar</button>
+                </div>
+            </form>
+            
+            <!-- Lista de Usuários -->
+            <ul id="listaUsuarios" style="margin-top: 25px; list-style: none; text-align: left; padding: 0;"></ul>
+        </div>
+    </main>
+</body>
+</html>

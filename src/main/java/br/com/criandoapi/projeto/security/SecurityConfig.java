@@ -19,9 +19,9 @@ public class SecurityConfig{
 			   .csrf(csfr -> csfr.disable())
 			   .authorizeHttpRequests(auth -> auth
 					   .requestMatchers(HttpMethod.POST, "/usuarios/login").permitAll()
-					   
-					// O padrão /**/ liberta a leitura independentemente do nível da pasta
 					   .requestMatchers(HttpMethod.GET, "/**/*.html", "/**/*.css", "/**/*.js", "/**/*.ico", "/favicon.ico", "/error").permitAll()		
+					   
+					   .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
 					   
 					   .anyRequest().authenticated()
 				);
